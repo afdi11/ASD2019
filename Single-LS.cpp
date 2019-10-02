@@ -31,7 +31,23 @@ typedef struct {
 #define Nil NULL
 #define Infinity 99999
 
- 
+bool isListEmpty (List L);
+void createList (List *L);
+address alokasi (infotype X);
+void dealokasi (address *P);
+void insertFirst (List *L, infotype X);
+void printInfo (List L);
+
+int main(){
+	List tester;
+	createList(&tester);
+	insertFirst(&tester,100);
+	insertFirst(&tester,120);
+	insertFirst(&tester,131);
+	printInfo(tester);
+
+    return 0;
+}
 
 bool isListEmpty (List L){
 	/* Mengirim true jika list kosong */
@@ -84,111 +100,111 @@ void insertFirst (List *L, infotype X){
 	}
 }
 
-void insertAfter (List *L, address P, address Prec){
-	/*	I.S. Prec pastilah elemen list dan bukan elemen terakhir,
-		P sudah dialokasi
-		F.S. Insert P sebagai elemen sesudah elemen beralamat Prec
-	*/
-	Next(P)=...(m)...;
-	...(n)...=P;
-}
+// void insertAfter (List *L, address P, address Prec){
+// 	/*	I.S. Prec pastilah elemen list dan bukan elemen terakhir,
+// 		P sudah dialokasi
+// 		F.S. Insert P sebagai elemen sesudah elemen beralamat Prec
+// 	*/
+// 	Next(P)=...(m)...;
+// 	...(n)...=P;
+// }
 
 
 
-void insertLast (List *L, infotype X){
-	/*	I.S. L mungkin kosong
-		F.S. X ditambahkan sebagai elemen terakhir L
-		Proses : Melakukan alokasi sebuah elemen dan menambahkan elemen list di akhir :
-		elemen terakhir yang baru bernilai X jika alokasi berhasil.
-		Jika alokasi gagal: I.S.= F.S.
-	*/
-	...(r)... = alokasi(X);
-	if(isListEmpty(*L))
-		...(s)...
-	else{
-		address last = getLast(*L);
-		insertAfter(L,...(t)...,last);
-	}
-}
+// void insertLast (List *L, infotype X){
+// 	/*	I.S. L mungkin kosong
+// 		F.S. X ditambahkan sebagai elemen terakhir L
+// 		Proses : Melakukan alokasi sebuah elemen dan menambahkan elemen list di akhir :
+// 		elemen terakhir yang baru bernilai X jika alokasi berhasil.
+// 		Jika alokasi gagal: I.S.= F.S.
+// 	*/
+// 	...(r)... = alokasi(X);
+// 	if(isListEmpty(*L))
+// 		...(s)...
+// 	else{
+// 		address last = getLast(*L);
+// 		insertAfter(L,...(t)...,last);
+// 	}
+// }
 
 
-/*
-* Fungsi Overloading => merupakan fungsi yang memiliki nama sama
-* namum memiliki parameter dan iplementasi yang berbeda.
-* contoh : 
-* insertFirst(List *L,address P) dan insertFirst (List *L, infotype X)
-* Beberda di parameter kedua, fungsi tersebut akan otomatis memilih fungsi yang akan
-* di jalankan , sesuai dengan parameter pembedanya( kedua ).
-*/
-void insertFirst(List *L,address P){
-	/*	I.S. L mungkin kosong
-		F.S. P ditambahkan sebagai elemen pertama L
-		Proses : Melakukan alokasi sebuah elemen dan menambahkan elemen pertama dengan
-		P hasil Alokasi X.
-		Jika alokasi gagal: I.S.= F.S.
-	*/
-	Next(P)=...(u)...;
-	First(*L) = ...(v)...;
-}
+// /*
+// * Fungsi Overloading => merupakan fungsi yang memiliki nama sama
+// * namum memiliki parameter dan iplementasi yang berbeda.
+// * contoh : 
+// * insertFirst(List *L,address P) dan insertFirst (List *L, infotype X)
+// * Beberda di parameter kedua, fungsi tersebut akan otomatis memilih fungsi yang akan
+// * di jalankan , sesuai dengan parameter pembedanya( kedua ).
+// */
+// void insertFirst(List *L,address P){
+// 	/*	I.S. L mungkin kosong
+// 		F.S. P ditambahkan sebagai elemen pertama L
+// 		Proses : Melakukan alokasi sebuah elemen dan menambahkan elemen pertama dengan
+// 		P hasil Alokasi X.
+// 		Jika alokasi gagal: I.S.= F.S.
+// 	*/
+// 	Next(P)=...(u)...;
+// 	First(*L) = ...(v)...;
+// }
 
-void insertLast(List *L,address P){
-	/*	I.S. L mungkin kosong
-		F.S. P ditambahkan sebagai elemen terakhir L
-		Proses : Melakukan alokasi sebuah elemen dan menambahkan elemen list di akhir :
-		elemen terakhir yang baru bernilai P hasil alokasi X.
-		Jika alokasi gagal: I.S.= F.S.
-	*/
-	if(isListEmpty(*L))
-		...(w)...
-	else{
-		address last = ...(x)...
-		insertAfter(L,P,...(y)...);
-	}
-}
+// void insertLast(List *L,address P){
+// 	/*	I.S. L mungkin kosong
+// 		F.S. P ditambahkan sebagai elemen terakhir L
+// 		Proses : Melakukan alokasi sebuah elemen dan menambahkan elemen list di akhir :
+// 		elemen terakhir yang baru bernilai P hasil alokasi X.
+// 		Jika alokasi gagal: I.S.= F.S.
+// 	*/
+// 	if(isListEmpty(*L))
+// 		...(w)...
+// 	else{
+// 		address last = ...(x)...
+// 		insertAfter(L,P,...(y)...);
+// 	}
+// }
 
-void deleteFirst (List *L, infotype *X){
-	/*	I.S. List L tidak kosong
-		F.S. Elemen pertama list dihapus : nilai info disimpan pada X
-		dan alamat elemen pertama di-dealokasi
-	*/
-	address P = First(*L);
-	*X = Info(P);
-    if (...(z)...)    // 1 element only
-        ...(1)...
-    else
-        ...(2)...;
-}
+// void deleteFirst (List *L, infotype *X){
+// 	/*	I.S. List L tidak kosong
+// 		F.S. Elemen pertama list dihapus : nilai info disimpan pada X
+// 		dan alamat elemen pertama di-dealokasi
+// 	*/
+// 	address P = First(*L);
+// 	*X = Info(P);
+//     if (...(z)...)    // 1 element only
+//         ...(1)...
+//     else
+//         ...(2)...;
+// }
 
-void deleteAfter (List *L, address *Pdel, address Prec){
-	/*	I.S. List tidak kosong. Prec adalah anggota list L.
-		F.S. Menghapus Next(Prec) : Pdel adalah alamat elemen list yang dihapus
-	*/
-	*Pdel = Next(Prec);
-	if(*Pdel!=Nil) {
-		...(3)...;
-	}
-	dealokasi(Pdel);
-}
+// void deleteAfter (List *L, address *Pdel, address Prec){
+// 	/*	I.S. List tidak kosong. Prec adalah anggota list L.
+// 		F.S. Menghapus Next(Prec) : Pdel adalah alamat elemen list yang dihapus
+// 	*/
+// 	*Pdel = Next(Prec);
+// 	if(*Pdel!=Nil) {
+// 		...(3)...;
+// 	}
+// 	dealokasi(Pdel);
+// }
 
-void deleteLast(List *L, infotype *X){
-	/*	I.S. list tidak kosong
-		F.S. Elemen terakhir list dihapus : nilai info disimpan pada X
-		dan alamat elemen terakhir di-dealokasi
-	*/
-	if(Next(...(4)...)==Nil){
-		//one element only
-		*X = Info(First(*L));
-		createList(L);
-	}else{
-		address prev = First(*L);
-		while(Next(...(5)...)!=Nil ){
-			prev = Next(prev);
-		}
-		address last =...(6)...;
-		*X = Info(last);
-		...(7)...;
-	}
-}
+// void deleteLast(List *L, infotype *X){
+// 	/*	I.S. list tidak kosong
+// 		F.S. Elemen terakhir list dihapus : nilai info disimpan pada X
+// 		dan alamat elemen terakhir di-dealokasi
+// 	*/
+// 	if(Next(...(4)...)==Nil){
+// 		//one element only
+// 		*X = Info(First(*L));
+// 		createList(L);
+// 	}else{
+// 		address prev = First(*L);
+// 		while(Next(...(5)...)!=Nil ){
+// 			prev = Next(prev);
+// 		}
+// 		address last =...(6)...;
+// 		*X = Info(last);
+// 		...(7)...;
+// 	}
+// }
 
 void printInfo (List L){
 	/*	I.S. List mungkin kosong
@@ -206,8 +222,4 @@ void printInfo (List L){
 		cout<<...(18)...;
 	}
 	cout<<...(19)...<<endl;
-}
-
-int main(){
-	return 0;
 }
